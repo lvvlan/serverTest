@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        #box{
+            width: 800px;
+            height: 600px;
+            margin: 20px auto;
+            border: 1px solid #f00;
+            background-size: cover;
+            background-position: center center;
+            background-repeat: no-repeat;
+            font-size: 38px;
+            font-weight: bold;
+            color: #f52f3e;
+            line-height: 600px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+<input id="btn" type="button" value="更换图片" />
+<div id="box"></div>
+<script src="//static.360buyimg.com/finance/common/lib/jquery/1.8.3/jquery.js"></script>
+<script>
+    $('#btn').on('click', function () {
+        console.log('a');
+        $.ajax({
+            url: '/background',
+            dataType: 'json',
+            beforeSend: function () {
+                $('#box').html('更换中...');
+            },
+            success: function (data) {
+                if(data.code == 200){
+                    $('#box').html('');
+                    $('#box').css('background-image', 'url("'+data.bgUrl+'")');
+                }
+                else {
+                    $('#box').html(data.msg);
+                }
+            }
+        });
+    });
+</script>
+</body>
+</html>
