@@ -29,7 +29,7 @@ var greetings = [
 ];
 var hours = moment().hours();
 
-app.get("/", function (req, res) {
+app.get("/", function (req, res) { 
     var iGreet = 0;
     if(hours>=0 && hours<=12){
         iGreet = 0;
