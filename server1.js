@@ -52,6 +52,7 @@ app.get("/", function (req, res) {
                 url: 'https://momentumdash.com/app/backgrounds.json',
                 method: 'GET'
             }, function (err, response, body) {
+		
                 if(!err && response.statusCode == 200){
                     var bg = JSON.parse(body);
                     res.render('test', {
